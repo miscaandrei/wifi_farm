@@ -12,6 +12,12 @@ class Dialog(QtGui.QDialog,Ui_Dialog):
     def __init__(self, parent=None):
         QtGui.QDialog.__init__(self,parent)
         self.setupUi(self)
+        self.valors_actuals()
+   
+    def valors_actuals(self):
+       self.temperatura_lcd.display(32.5)
+       self.temperatura_set.setValue(32.5)
+   
    
     #SLOTS DIALOG#
     def apagar_llum_1(self):

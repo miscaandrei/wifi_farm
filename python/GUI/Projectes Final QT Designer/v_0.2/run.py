@@ -88,12 +88,56 @@ class MainWindow(QtGui.QMainWindow,Ui_MainWindow):
 
 '''
 
+def inicialitzar_valors(finestra):
+    lista = llegeix_arxiu()
+    for element in lista:
+        print element
+    finestra.complex_1_temperatura.display(lista[0])
+    finestra.complex_1_humitat.display(lista[1])
+    finestra.complex_1_lluminositat.display(lista[2])
+    
+    finestra.complex_2_temperatura.display(lista[3])
+    finestra.complex_2_humitat.display(lista[4])
+    finestra.complex_2_lluminositat.display(lista[5])
+    
+    finestra.complex_3_temperaura.display(lista[6])
+    finestra.complex_3_humitat.display(lista[7])
+    finestra.complex_3_luminositat.display(lista[8])
+    
+    finestra.aus_adults_lcd.display(lista[9])
+    finestra.aus_creixent_lcd.display(lista[10])
+    finestra.aus_totals.display(lista[9]+lista[10])
+    
+    finestra.altre_total.display(lista[11]+lista[12])
+    finestra.altre_adults_lcd.display(lista[11])
+    finestra.altre_creixent_lcd.display(lista[12])
+
+    finestra.aus_adults_progress_bar.setValue(lista[9]*100/(lista[9]+lista[10]))
+    finestra.aus_creixent_progress_bar.setValue(lista[10]*100/(lista[9]+lista[10]))
+    
+    
+    finestra.altre_adults_progress_bar.setValue(lista[11]*100/(lista[11]+lista[12]))
+    finestra.altre_creixent_progress_bar.setValue(lista[12]*100/(lista[11]+lista[12]))
+
+
+
+def llegeix_arxiu():
+    print 'Llegint arxiu'
+    lista=[21,18,76,21,25,95,23,23,5,300,200,200,150]
+    return lista
+
+
 
 if __name__ == "__main__":
     global app
     app = QtGui.QApplication(sys.argv)
     finestra = MainWindow()
     finestra.show()
+    
+    inicialitzar_valors(finestra)
 
     
     sys.exit(app.exec_())
+
+
+
